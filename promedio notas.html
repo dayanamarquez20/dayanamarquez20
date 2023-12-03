@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7c8c8;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Promedio de Calificaciones</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Promedio de Calificaciones</h1>
+        <label for="calificacion">Ingrese una calificación y haga clic en 'Agregar Calificación':</label>
+        <input type="number" id="calificacion" step="0.1" required>
+        <button onclick="agregarCalificacion()">Agregar Calificación</button>
+        <button onclick="calcularPromedio()">Calcular Promedio</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        let calificaciones = [];
+
+        function agregarCalificacion() {
+            let calificacion = parseFloat(document.getElementById("calificacion").value);
+            if (!isNaN(calificacion)) {
+                calificaciones.push(calificacion);
+                document.getElementById("calificacion").value = "";
+            }
+        }
+
+        function calcularPromedio() {
+            if (calificaciones.length === 0) {
+                alert("Ingrese al menos una calificación.");
+                return;
+            }
+
+            let suma = calificaciones.reduce(function (total, calificacion) {
+                return total + calificacion;
+            }, 0);
+
+            let promedio = suma / calificaciones.length;
+
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = "<p>El promedio de las calificaciones es: " + promedio.toFixed(2) + "</p>";
+        }
+
+        function limpiar() {
+            calificaciones = [];
+            document.getElementById("calificacion").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5aeae;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Adivina el Número</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Adivina el Número</h1>
+        <label for="adivinaNumero">Ingresa un número:</label>
+        <input type="number" id="adivinaNumero" required>
+        <button onclick="adivinarNumero()">Adivinar</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        // Generar un número aleatorio entre 1 y 10
+        let numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+
+        function adivinarNumero() {
+            var intentoUsuario = parseInt(document.getElementById("adivinaNumero").value);
+
+            let resultado = document.getElementById("resultado");
+            if (!isNaN(intentoUsuario)) {
+                if (intentoUsuario === numeroAleatorio) {
+                    resultado.innerHTML = "<p>¡Adivinaste el número!</p>";
+                } else {
+                    resultado.innerHTML = "<p>Intenta de nuevo.</p>";
+                }
+            } else {
+                resultado.innerHTML = "<p>Por favor, ingresa un número válido.</p>";
+            }
+        }
+
+        function limpiar() {
+            document.getElementById("adivinaNumero").value = "";
+            document.getElementById("resultado").innerHTML = "";
+            // Generar un nuevo número aleatorio
+            numeroAleatorio = Math.floor(Math.random() * 10) + 1;
+        }
+    </script>
+</body>
+</html>

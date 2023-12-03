@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Par o Impar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: #c8e67b; /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #d396e9; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #f1eded; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #915f5f; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #100f0f; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #botonRegresar {
+            background-color: #007bff; /* Color de fondo del botón de regreso */
+            color: #fff; /* Color del texto del botón de regreso */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; /* Espaciado en la parte superior del botón de regreso */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Número Par o Impar</h1>
+
+    <div>
+        <label for="numero">Ingrese un número: </label>
+        <input type="number" id="numero" />
+
+        <button onclick="verificarParImpar()">Verificar</button>
+
+        <div id="resultado"></div>
+
+        <!-- Botón de Regreso -->
+        <button id="botonRegresar" onclick="regresar()">Regresar</button>
+    </div>
+
+    <script>
+        function verificarParImpar() {
+            // Obtener el valor del número desde el campo de entrada
+            let numero = parseInt(document.getElementById('numero').value);
+
+            // Verificar si se ingresó un número válido
+            if (!isNaN(numero)) {
+                // Determinar si es par o impar
+                let resultado = (numero % 2 === 0) ? "El número es par." : "El número es impar.";
+
+                // Mostrar el resultado
+                document.getElementById('resultado').textContent = resultado;
+            } else {
+                // Mostrar un mensaje de error si el valor no es válido
+                document.getElementById('resultado').textContent = "Por favor, ingresa un número válido.";
+            }
+        }
+
+        // Función para regresar a otra página (puedes cambiar la URL según tus necesidades)
+        function regresar() {
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>
+

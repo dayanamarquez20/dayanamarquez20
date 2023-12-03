@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f84141;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #tablaResultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Tabla de Multiplicar</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Tabla de Multiplicar</h1>
+        <label for="numero">Ingrese un número:</label>
+        <input type="number" id="numero" required>
+        <button onclick="generarTabla()">Generar Tabla</button>
+        <div id="tablaResultado"></div>
+        <button onclick="limpiarTabla()">Ingresar otro número</button>
+        <button id="botonRegresar" onclick="regresar()">Regresar</button>
+    </div>
+
+    <script>
+        function generarTabla() {
+            let numero = document.getElementById("numero").value;
+            let tablaResultado = document.getElementById("tablaResultado");
+            let tablaHTML = "<h2>Tabla de multiplicar del " + numero + ":</h2><ul>";
+
+            for (let i = 1; i <= 12; i++) {
+                let resultado = numero * i;
+                tablaHTML += "<li>" + numero + " x " + i + " = " + resultado + "</li>";
+            }
+
+            tablaHTML += "</ul>";
+            tablaResultado.innerHTML = tablaHTML;
+        }
+         function regresar() {
+            window.location.href = "../index.html";
+        }
+        
+    </script>
+</body>
+</html>

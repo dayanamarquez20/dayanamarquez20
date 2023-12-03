@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8acaf7;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Suma de Números Impares</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Suma de Números Impares</h1>
+        <label for="rangoInicio">Inicio del rango:</label>
+        <input type="number" id="rangoInicio" required>
+        <label for="rangoFin">Fin del rango:</label>
+        <input type="number" id="rangoFin" required>
+        <button onclick="calcularSuma()">Calcular Suma</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        function calcularSuma() {
+            let inicio = parseInt(document.getElementById("rangoInicio").value);
+            let fin = parseInt(document.getElementById("rangoFin").value);
+
+            if (!isNaN(inicio) && !isNaN(fin)) {
+                let suma = 0;
+
+                // Asegurarse de que inicio sea impar
+                inicio = inicio % 2 === 0 ? inicio + 1 : inicio;
+
+                for (let numero = inicio; numero <= fin; numero += 2) {
+                    suma += numero;
+                }
+
+                let resultado = document.getElementById("resultado");
+                resultado.innerHTML = "<p>La suma de los números impares en el rango " + inicio + " a " + fin + " es: " + suma + "</p>";
+            } else {
+                alert("Por favor, ingrese números válidos en ambos campos.");
+            }
+        }
+
+        function limpiar() {
+            document.getElementById("rangoInicio").value = "";
+            document.getElementById("rangoFin").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

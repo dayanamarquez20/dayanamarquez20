@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edb2b2;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Cuenta Regresiva</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Cuenta Regresiva</h1>
+        <label for="numero">Ingrese un número entero positivo:</label>
+        <input type="number" id="numero" required>
+        <button onclick="iniciarCuentaRegresiva()">Iniciar Cuenta Regresiva</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        function iniciarCuentaRegresiva() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let resultado = document.getElementById("resultado");
+
+            // Validar que se ingrese un número positivo
+            if (isNaN(numero) || numero <= 0) {
+                resultado.innerHTML = "<p>Por favor, ingrese un número entero positivo válido.</p>";
+                return;
+            }
+
+            // Mostrar cuenta regresiva
+            let cuentaRegresiva = "";
+            while (numero > 0) {
+                cuentaRegresiva += numero + " ";
+                numero--;
+            }
+
+            resultado.innerHTML = "<p>Cuenta Regresiva: " + cuentaRegresiva + "</p>";
+        }
+
+        function limpiar() {
+            document.getElementById("numero").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

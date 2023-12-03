@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar Palabra</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: #f0a7a7; /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-bottom: 20px; /* Añadido para separar el botón de regreso */
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Copiar Palabra</h1>
+
+    <div>
+        <label for="palabra1">Ingrese la primera palabra: </label>
+        <input type="text" id="palabra1" />
+
+        <label for="palabra2">Ingrese la segunda palabra: </label>
+        <input type="text" id="palabra2" />
+
+        <button onclick="concatenarPalabras()">Concatenar Palabras</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button onclick="regresar()">Regresar</button>
+
+    <script>
+        function concatenarPalabras() {
+            // Obtener los valores de las palabras desde los campos de entrada
+            let palabra1 = document.getElementById('palabra1').value;
+            let palabra2 = document.getElementById('palabra2').value;
+
+            // Concatenar las palabras con un espacio entre ellas
+            let resultado = palabra1 + ' ' + palabra2;
+
+            // Mostrar el resultado
+            document.getElementById('resultado').textContent = `Palabras concatenadas: ${resultado}`;
+        }
+
+        function regresar() {
+            // Redirigir al usuario a la página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5c6c6;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Mayor y Menor Valor</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Mayor y Menor Valor</h1>
+        <label for="numeros">Ingrese números separados por comas:</label>
+        <input type="text" id="numeros" required>
+        <button onclick="encontrarMayorMenor()">Encontrar Mayor y Menor</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        function encontrarMayorMenor() {
+            let numerosTexto = document.getElementById("numeros").value;
+            let numeros = numerosTexto.split(',').map(function (num) {
+                return parseInt(num.trim());
+            });
+
+            if (numeros.some(isNaN)) {
+                alert("Ingrese números válidos separados por comas.");
+                return;
+            }
+
+            if (numeros.length === 0) {
+                alert("Ingrese al menos un número.");
+                return;
+            }
+
+            let mayor = Math.max.apply(null, numeros);
+            let menor = Math.min.apply(null, numeros);
+
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = "<p>El mumero mayor es: " + mayor + "</p><p>El  numero menor es: " + menor + "</p>";
+        }
+
+        function limpiar() {
+            document.getElementById("numeros").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

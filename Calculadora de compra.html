@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Compra con Múltiples Artículos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: #e9a5a5; /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-bottom: 20px; /* Añadido para separar el botón de regreso */
+            text-align: center;
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculadora de Compra con Múltiples Artículos</h1>
+
+    <div>
+        <label for="articuloPrecio">Precio del artículo: </label>
+        <input type="number" id="articuloPrecio" />
+
+        <label for="articuloCantidad">Cantidad del artículo: </label>
+        <input type="number" id="articuloCantidad" />
+
+        <button onclick="agregarArticulo()">Agregar Artículo</button>
+
+        <div id="listaArticulos"></div>
+
+        <button onclick="calcularTotal()">Calcular Total</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button onclick="regresar()">Regresar</button>
+
+    <script>
+        let articulos = [];
+
+        function agregarArticulo() {
+            // Obtener los valores del precio y la cantidad del artículo
+            let precio = parseFloat(document.getElementById('articuloPrecio').value);
+            let cantidad = parseFloat(document.getElementById('articuloCantidad').value);
+
+            // Agregar el artículo a la lista
+            articulos.push({ precio, cantidad });
+
+            // Mostrar la lista de artículos
+            mostrarListaArticulos();
+        }
+
+        function mostrarListaArticulos() {
+            let listaArticulos = document.getElementById('listaArticulos');
+            listaArticulos.innerHTML = '<h3>Lista de Artículos</h3>';
+
+            // Mostrar cada artículo en la lista
+            articulos.forEach((articulo, index) => {
+                listaArticulos.innerHTML += `<p>Artículo ${index + 1}: Precio $${articulo.precio.toFixed(2)}, Cantidad ${articulo.cantidad}</p>`;
+            });
+        }
+
+        function calcularTotal() {
+            // Calcular el total de la compra
+            let total = articulos.reduce((acc, articulo) => acc + (articulo.precio * articulo.cantidad), 0);
+
+            // Aplicar un descuento del 10% si el total es mayor a $100
+            if (total > 100) {
+                total *= 0.9; // Descuento del 10%
+            }
+
+            // Mostrar el resultado
+            document.getElementById('resultado').textContent = `Total de la compra: $${total.toFixed(2)}`;
+        }
+
+        function regresar() {
+            // Redirigir al usuario a la página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

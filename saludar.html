@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1bdbd;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>Saludo con Parámetros</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Saludo con Parámetros</h1>
+        <label for="mensaje">Ingrese su mensaje:</label>
+        <input type="text" id="mensaje">
+        <button onclick="saludar()">Saludar</button>
+        <button onclick="regresar()">Regresar</button>
+    </div>
+
+    <script>
+        function saludar() {
+            let mensaje = document.getElementById("mensaje").value;
+            alert("Mensaje: " + mensaje);
+        }
+
+        function regresar() {
+            // Aquí puedes redirigir a otra página o realizar alguna otra acción de "regreso"
+            alert("Regresando...");
+        }
+    </script>
+</body>
+</html>

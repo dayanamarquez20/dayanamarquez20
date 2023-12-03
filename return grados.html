@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor Celsius a Fahrenheit</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: rgb(208, 92, 92); /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #00fff2; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-bottom: 20px; /* Añadido para separar el botón de regreso */
+            text-align: center;
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Borde del campo de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Conversor Celsius a Fahrenheit</h1>
+
+    <div>
+        <label for="celsius">Ingresa la temperatura en Celsius: </label>
+        <input type="number" id="celsius" placeholder="Escribe la temperatura en Celsius">
+
+        <button onclick="convertirCelsiusAFahrenheit()">Convertir</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button onclick="regresar()">Regresar</button>
+
+    <script>
+        function convertirCelsiusAFahrenheit() {
+            // Obtener el valor del campo de entrada
+            let temperaturaCelsius = parseFloat(document.getElementById('celsius').value);
+
+            // Verificar si se ingresó una temperatura
+            if (!isNaN(temperaturaCelsius)) {
+                // Calcular la temperatura en Fahrenheit
+                let temperaturaFahrenheit = (temperaturaCelsius * 9/5) + 32;
+
+                // Mostrar el resultado
+                document.getElementById('resultado').textContent = `La temperatura en Fahrenheit es: ${temperaturaFahrenheit.toFixed(2)} °F`;
+            } else {
+                alert('Por favor, ingresa una temperatura válida en Celsius.');
+            }
+        }
+
+        function regresar() {
+            // Redirigir al usuario a la página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

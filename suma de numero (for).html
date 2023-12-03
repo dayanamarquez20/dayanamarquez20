@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Suma de Números</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Suma de Números</h1>
+        <label for="numero">Ingrese un número positivo (ingrese un número negativo para finalizar):</label>
+        <input type="number" id="numero" required>
+        <button onclick="calcularSuma()">Agregar Número</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        function calcularSuma() {
+            let numero = parseInt(document.getElementById("numero").value);
+            let suma = 0;
+
+            while (numero >= 0) {
+                suma += numero;
+                document.getElementById("numero").value = ""; // Limpiar el campo de entrada
+                numero = parseInt(prompt("Ingrese otro número positivo (ingrese un número negativo para finalizar):"));
+            }
+
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = "<p>La suma de los números ingresados es: " + suma + "</p>";
+        }
+
+        function limpiar() {
+            document.getElementById("numero").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

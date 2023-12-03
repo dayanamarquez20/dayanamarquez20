@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9c6c6;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Contador de Vocales</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Contador de Vocales</h1>
+        <label for="palabra">Ingrese una palabra:</label>
+        <input type="text" id="palabra" required>
+        <button onclick="contarVocales()">Contar Vocales</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        function contarVocales() {
+            let palabra = document.getElementById("palabra").value.toLowerCase();
+            let contadorVocales = 0;
+            let vocales = ['a', 'e', 'i', 'o', 'u'];
+
+            let indice = 0;
+            while (indice < palabra.length) {
+                if (vocales.includes(palabra[indice])) {
+                    contadorVocales++;
+                }
+                indice++;
+            }
+
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = "<p>La palabra '" + palabra + "' tiene " + contadorVocales + " vocales.</p>";
+        }
+
+        function limpiar() {
+            document.getElementById("palabra").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>

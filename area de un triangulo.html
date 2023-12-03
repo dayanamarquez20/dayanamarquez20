@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de un Triángulo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: #f39e9e; /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-top: 20px; /* Añadido espacio en la parte superior del contenedor */
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #botonRegresar {
+            background-color: #007bff; /* Color de fondo del botón de regreso */
+            color: #fff; /* Color del texto del botón de regreso */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Área de un Triángulo</h1>
+
+    <div>
+        <label for="base">Base del triángulo: </label>
+        <input type="number" id="base" />
+
+        <label for="altura">Altura del triángulo: </label>
+        <input type="number" id="altura" />
+
+        <button onclick="calcularArea()">Calcular Área</button>
+
+        <div id="resultado"></div>
+
+        <!-- Botón de Regreso -->
+        <button id="botonRegresar" onclick="regresar()">Regresar</button>
+    </div>
+
+    <script>
+        function calcularArea() {
+            // Obtener los valores de la base y la altura desde los campos de entrada
+            let base = parseFloat(document.getElementById('base').value);
+            let altura = parseFloat(document.getElementById('altura').value);
+
+            // Verificar si se ingresaron números válidos
+            if (!isNaN(base) && !isNaN(altura)) {
+                // Calcular el área del triángulo (Área = (base * altura) / 2)
+                let area = (base * altura) / 2;
+
+                // Mostrar el resultado
+                document.getElementById('resultado').textContent = "El área del triángulo es: " + area;
+            } else {
+                // Mostrar un mensaje de error si los valores no son válidos
+                document.getElementById('resultado').textContent = "Por favor, ingresa números válidos.";
+            }
+        }
+
+        // Función para regresar a otra página (puedes cambiar la URL según tus necesidades)
+        function regresar() {
+            window.location.href = "../index.html";
+        }
+    </script>
+</body>
+</html>
+
+

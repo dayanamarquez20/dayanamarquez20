@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Determinar Signo Zodiacal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: rgba(245, 141, 141, 0.844); /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #ffffff; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-bottom: 20px; /* Añadido para separar el botón de regreso */
+            text-align: center;
+        }
+
+        label {
+            color: #555; /* Color del texto de las etiquetas */
+        }
+
+        select, input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Determinar Signo Zodiacal</h1>
+
+    <div>
+        <label for="mes">Selecciona tu mes de nacimiento: </label>
+        <select id="mes">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+
+        <label for="dia">Ingresa tu día de nacimiento: </label>
+        <input type="number" id="dia" />
+
+        <button onclick="determinarSigno()">Determinar Signo</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button onclick="regresar()">Regresar</button>
+
+    <script>
+        function determinarSigno() {
+            // Obtener los valores del mes y día desde los campos de entrada
+            let mes = parseInt(document.getElementById('mes').value);
+            let dia = parseInt(document.getElementById('dia').value);
+
+            // Verificar si los valores son válidos
+            if (!isNaN(mes) && !isNaN(dia) && mes >= 1 && mes <= 12 && dia >= 1 && dia <= 31) {
+                // Determinar el signo zodiacal
+                let signo = determinarSignoZodiacal(mes, dia);
+
+                // Mostrar el resultado
+                document.getElementById('resultado').textContent = `Tu signo zodiacal es: ${signo}`;
+            } else {
+                // Mostrar un mensaje de error si los valores no son válidos
+                document.getElementById('resultado').textContent = "Por favor, ingresa valores válidos.";
+            }
+        }
+
+        function determinarSignoZodiacal(mes, dia) {
+            // Array con las fechas límite para cada signo zodiacal (día en que cambia de signo)
+            const fechasLimites = [20, 19, 20, 20, 21, 21, 22, 23, 23, 23, 22, 21];
+
+            // Array con los nombres de los signos zodiacales
+            const signos = ["Capricornio", "Acuario", "Piscis", "Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario"];
+
+            // Determinar el índice del signo zodiacal en el array
+            let indice = mes - 1;
+
+            // Verificar si el día de nacimiento es mayor que la fecha límite para el siguiente signo
+            if (dia > fechasLimites[indice]) {
+                indice = (indice + 1) % 12; // Cambiar al siguiente signo zodiacal
+            }
+
+            // Obtener el nombre del signo zodiacal
+            return signos[indice];
+        }
+
+        function regresar() {
+            // Redirigir al usuario a la página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

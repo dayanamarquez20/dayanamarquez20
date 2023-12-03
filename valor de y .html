@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Expresión</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Añadido para centrar el contenido verticalmente */
+            background-color: #a2f29d; /* Color de fondo del cuerpo */
+            color: #333; /* Color del texto del cuerpo */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Color del texto del título */
+        }
+
+        div {
+            background-color: #d6c9c9; /* Color de fondo del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
+            margin-bottom: 20px; /* Añadido para separar el botón de regreso */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #af6666; /* Borde de los campos de entrada */
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #28a745; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        #resultado {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calcular Expresión</h1>
+
+    <div>
+        <label for="valorA">Ingrese el valor de a:</label>
+        <input type="number" id="valorA" />
+
+        <label for="valorB">Ingrese el valor de b:</label>
+        <input type="number" id="valorB" />
+
+        <button onclick="calcularExpresion()">Calcular</button>
+
+        <div id="resultado"></div>
+    </div>
+
+    <!-- Botón de regreso -->
+    <button onclick="regresar()">Regresar</button>
+
+    <script>
+        function calcularExpresion() {
+            // Obtener los valores de a y b desde los campos de entrada
+            let a = parseFloat(document.getElementById('valorA').value);
+            let b = parseFloat(document.getElementById('valorB').value);
+
+            // Verificar si se ingresaron números válidos
+            if (!isNaN(a) && !isNaN(b)) {
+                // Calcular la expresión y = 2 * a + b - a mod 3
+                let y = 2 * a + b - a % 3;
+
+                // Mostrar el resultado
+                document.getElementById('resultado').textContent = `El valor de y es: ${y}`;
+            } else {
+                // Mostrar un mensaje de error si los valores no son válidos
+                document.getElementById('resultado').textContent = "Por favor, ingresa números válidos para a y b.";
+            }
+        }
+
+        function regresar() {
+            // Redirigir al usuario a la página anterior
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

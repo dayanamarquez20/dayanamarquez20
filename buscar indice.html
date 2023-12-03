@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7a4a4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Buscar Índice</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Buscar Índice</h1>
+        <label for="valor">Ingrese un valor:</label>
+        <input type="text" id="valor" required>
+        <button onclick="buscarIndice()">Buscar Índice</button>
+        <div id="resultado"></div>
+        <button onclick="limpiar()">Regresar</button>
+    </div>
+
+    <script>
+        let arreglo = [5, 2, 8, 2, 4, 7, 2]; // Puedes cambiar este arreglo según tus necesidades
+
+        function buscarIndice() {
+            let valor = document.getElementById("valor").value;
+            let indices = [];
+
+            arreglo.forEach(function (elemento, index) {
+                if (elemento == valor) {
+                    indices.push(index);
+                }
+            });
+
+            let resultado = document.getElementById("resultado");
+            if (indices.length > 0) {
+                resultado.innerHTML = "<p>El valor " + valor + " aparece en los índices: " + indices.join(', ') + "</p>";
+            } else {
+                resultado.innerHTML = "<p>El valor " + valor + " no se encuentra en el arreglo.</p>";
+            }
+        }
+
+        function limpiar() {
+            document.getElementById("valor").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
